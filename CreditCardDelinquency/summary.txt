@@ -1,0 +1,75 @@
+데이터 관찰
+
+test의 credit column : 예측해야할 값 ( target )
+sample_submission 과 동일한 형태
+
+19개의 column : x
+credit : y
+model.fit(x,y)
+입력된 x와 y에 맞는 model을 형성
+
+
+-----------데이터 전처리
+
+동일한 전처리를 위해 train과 test 데이터 합침 ( pd.concat )
+결측치 확인 : isnull() / 결측값 : True로 리턴
+결측값 개수 합 : isnull().sum()
+
+occyp_type column 제거
+( 26457 + 10000 ) x 19
+
+각 column이 갖고있는 요소 갯수 counting : unique()
+len(df.unique())
+lambda를 이용해 모든 unique 값 구함
+2개 이하 / 2개 초과 10개 이하 / 10개 초과 3개의 그룹으로 구분
+
+group1 문자열로 되어있는 이진변수를 0/1로 변경
+
+group2 예측에 사용할 credit 열 제외
+loc[row, column] 을 이용해 이상치들을 수정
+
+카테고리형 변수 전처리:
+from sklearn import preprocessing
+label_encoder = preprocessing.LabelEncoder()
+label_encoder.fit_transform()
+
+data[column].unique() 모든 값 종류 반환
+transform(data[column])으로 숫자로 변환
+
+group3 np.histogram(연속형변수, bins = 구간수) -> [각 구간별 갯수], [구간 구분점]
+pd.cut(연속형변수 ,bins = 구간수, labels = 변경할 인덱싱, include_lowest : True/False 최소값 구분점에 포함여부)
+pd.cut 카테고리 타입으로 출력
+pd.factorize() int형으로 변경
+
+
+------------학습하기
+
+:-10000 와 -10000: 로 train test 로 재분리
+train의 credit 열을 drop 후 train_x로 저장, credit 열을 출력 데이터셋 train_y으로 저장
+test의 credit 열 drop
+
+randomforest
+clf = classifier()
+clf.fit(입력 데이터 셋, 출력 데이터 셋)
+clf.predict_proba(입력) : 예측 결과 출력 -> axis=0 방향으로 합하면 1(확률)
+test set에 대한 예측 결과 ( 10000,4 ) 가 제출해야할 파일의 형식 ( index num column + 3 column)
+
+1. validation 활용
+train set을 x_train 3:1 x_val 비율로 분할
+clf.predict_proba(x_val) 로 y_val 을 추출, 실제 index와 비교하여 성능 테스트
+
+from sklearn.model_selection import train_test_split
+stratify = train_y : train_y 값들의 비율을 고려하여 분할
+random_state 를 설정, 같은 시드에선 항상 같은 값 도출
+
+pd.get_dummies(입력)를 이용해 y_val을 one-hot encoding
+
+from sklearn.metrics import log_loss
+log_loss(실제값, 예측값) : loss function, 낮을수록 좋음 ( 100%일 경우 0 )
+
+overfitting을 방지하기 위해
+2. k-fold 활용 ( 5-fold )
+from sklearn.model_selection import StratifiedKFold
+n_splits = 분할 수, shuffle= True/False, random_state 사용
+
+StratifiedKFold().split(train_x, train_y) : 비율에 맞게 분할된 데이터 반환
