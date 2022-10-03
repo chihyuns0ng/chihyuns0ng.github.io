@@ -7,7 +7,7 @@
     <h3>Want To Be A Data Analyst</h3>
     <ul>
         <li>Bachelor of Science in Department of Data Science 2022.02</li>
-        <li>LikeLion AI School 7th 22.9.14~</li>
+        <li>LikeLion AI School 7th 2022.09.14~</li>
     </ul>
 </body>
 </html>
