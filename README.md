@@ -8,7 +8,7 @@
     <h4>chihyun.99@gmail.com / maplexz@naver.com</h4>
     <ul>
         <li>Bachelor of Science in Department of Data Science 2022.02</li>
-        <li>LikeLion AI School 7th 2022.09.14~</li>
+        <li>LikeLion AI School 7th 2022.09.14~2023.01.13</li>
     </ul>
 </body>
 </html>
