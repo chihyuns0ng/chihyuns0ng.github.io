@@ -9,6 +9,7 @@
     <ul>
         <li>Bachelor of Science in Department of Data Science 2022.02</li>
         <li>LikeLion AI School 7th 2022.09.14~2023.01.13</li>
+        <li>LG Aimers 5th 2024.07.01~</li>
     </ul>
 </body>
 </html>
