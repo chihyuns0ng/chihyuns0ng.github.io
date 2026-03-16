@@ -10,6 +10,7 @@
         <li>Bachelor of Science in Department of Data Science 2022.02</li>
         <li>LikeLion AI School 7th 2022.09.14~2023.01.13</li>
         <li>LG Aimers 5th 2024.07.01~2024.08.30</li>
+        <li>LG Aimers 7th 2025.07.01~2024.08.25</li>
     </ul>
 </body>
 </html>
